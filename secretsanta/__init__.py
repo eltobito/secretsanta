@@ -11,8 +11,7 @@ for pigeur in list1:
         count = 1
     listChoix=['','']
     while (count < 2):
-        
-        
+
         index = randint(0,len(list2)-1)
         if(pigeur != list2[index]):
             print count, index
