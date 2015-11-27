@@ -1,10 +1,10 @@
 from random import randint
 import smtplib
 
-list1 = ['TOBIE', 'KIM', 'JEFF', 'MORGAN','RAY','PEPET']
+participants = ['TOBIE', 'KIM', 'JEFF', 'MORGAN','RAY','PEPET']
 list2 = ['TOBIE', 'KIM', 'JEFF', 'MORGAN','RAY','PEPET','TOBIE', 'KIM', 'JEFF','RAY','PEPET']
 dict = {}
-for pigeur in list1:
+for pigeur in participants:
     
     count = 0
     if('MORGAN'== pigeur):
