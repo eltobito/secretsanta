@@ -1,30 +1,65 @@
 from random import randint
 import smtplib
 
-participants = ['TOBIE', 'KIM', 'JEFF', 'MORGAN','RAY','PEPET']
-list2 = ['TOBIE', 'KIM', 'JEFF', 'MORGAN','RAY','PEPET','TOBIE', 'KIM', 'JEFF','RAY','PEPET']
-dict = {}
-for pigeur in participants:
-    
+#####Settings 
+participants = ['TOBIE', 'KIM', 'JEFF', 'RAY','PEPET']
+participants_exception = ['MORGAN']
+number_of_pick_by_person = 2
+number_of_pick_by_person_exception = 1
+#####
+
+names_to_pick = []
+result = {}
+
+# Set list of name to pick 
+for participant in participants:
+    i=0
+    while i < number_of_pick_by_person :
+        names_to_pick.append(participant)
+        i = i + 1
+
+for participant in participants_exception:
+    i=0
+    while i < number_of_pick_by_person_exception :
+        names_to_pick.append(participant)
+        i = i + 1    
+
+#Exception pick first
+for draw in participants_exception:   
     count = 0
-    if('MORGAN'== pigeur):
-        count = 1
-    listChoix=['','']
-    while (count < 2):
+    listChoix=[]
+    while (count < number_of_pick_by_person_exception):
 
-        index = randint(0,len(list2)-1)
-        if(pigeur != list2[index]):
-            print count, index
-            listChoix[count] = list2[index]
+        index = randint(0,len(names_to_pick)-1)
+        if(draw != names_to_pick[index]):
+            listChoix.append(names_to_pick[index])
             count = count + 1
-            del list2[index]
-    dict[pigeur] = listChoix
+            del names_to_pick[index]
+    result[draw] = listChoix
 
-for key, value in dict.iteritems():
+#Regular picker    
+for draw in participants:   
+    count = 0
+    listChoix=[]
+    while (count < number_of_pick_by_person):
+
+        index = randint(0,len(names_to_pick)-1)
+        if(draw != names_to_pick[index]):
+
+            listChoix.append(names_to_pick[index])
+            count = count + 1
+            del names_to_pick[index]
+    result[draw] = listChoix
+
+for key, value in result.iteritems():
     file_ = open(key+'.txt', 'w')
-    if('MORGAN'== key):
-        file_.write(''.join(value))
+    if(len(value) == 1):
+        receiver = ''.join(value)
+        file_.write(receiver)
+        print receiver
     else:    
-        file_.write(' et '.join(value))
+        receiver = ' and '.join(value)
+        file_.write(receiver)
+        print receiver
     file_.close()        
-    print "Successfully save"
+    print "Successfully save for partipant "+key
