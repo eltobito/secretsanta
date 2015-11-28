@@ -11,13 +11,14 @@ number_of_pick_by_person_exception = 1
 names_to_pick = []
 result = {}
 
-# Set list of name to pick 
+# Set list of name to pick Regular
 for participant in participants:
     i=0
     while i < number_of_pick_by_person :
         names_to_pick.append(participant)
         i = i + 1
 
+# Set list of name to pick Exception
 for participant in participants_exception:
     i=0
     while i < number_of_pick_by_person_exception :
@@ -51,15 +52,18 @@ for draw in participants:
             del names_to_pick[index]
     result[draw] = listChoix
 
+#Put result in a file for each paticipant. 
 for key, value in result.iteritems():
     file_ = open(key+'.txt', 'w')
     if(len(value) == 1):
         receiver = ''.join(value)
         file_.write(receiver)
-        print receiver
+        #print receiver
     else:    
         receiver = ' and '.join(value)
         file_.write(receiver)
-        print receiver
+        #print receiver
     file_.close()        
-    print "Successfully save for partipant "+key
+    print "File with name(s) picked successfully created for partipant "+key
+    
+print "\n\n** Now send the right file to the right participant by email manuelly **"
