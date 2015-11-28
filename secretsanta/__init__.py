@@ -1,35 +1,29 @@
-from random import randint
-import smtplib
 
-#####Settings 
-participants = ['TOBIE', 'KIM', 'JEFF', 'RAY','PEPET']
-participants_exception = ['MORGAN']
-number_of_pick_by_person = 2
-number_of_pick_by_person_exception = 1
-#####
+from random import randint
+import settings as conf
 
 names_to_pick = []
 result = {}
 
 # Set list of name to pick Regular
-for participant in participants:
+for participant in conf.participants:
     i=0
-    while i < number_of_pick_by_person :
+    while i < conf.number_of_pick_by_person :
         names_to_pick.append(participant)
         i = i + 1
 
 # Set list of name to pick Exception
-for participant in participants_exception:
+for participant in conf.participants_exception:
     i=0
-    while i < number_of_pick_by_person_exception :
+    while i < conf.number_of_pick_by_person_exception :
         names_to_pick.append(participant)
         i = i + 1    
 
 #Exception pick first
-for draw in participants_exception:   
+for draw in conf.participants_exception:   
     count = 0
     listChoix=[]
-    while (count < number_of_pick_by_person_exception):
+    while (count < conf.number_of_pick_by_person_exception):
 
         index = randint(0,len(names_to_pick)-1)
         if(draw != names_to_pick[index]):
@@ -39,10 +33,10 @@ for draw in participants_exception:
     result[draw] = listChoix
 
 #Regular picker    
-for draw in participants:   
+for draw in conf.participants:   
     count = 0
     listChoix=[]
-    while (count < number_of_pick_by_person):
+    while (count < conf.number_of_pick_by_person):
 
         index = randint(0,len(names_to_pick)-1)
         if(draw != names_to_pick[index]):
