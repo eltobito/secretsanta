@@ -1,7 +1,7 @@
 
-#####Settings 
-participants = ['TOBIE', 'KIM', 'JEFF', 'RAY','PEPET']
-participants_exception = ['MORGAN']
-number_of_pick_by_person = 2
-number_of_pick_by_person_exception = 1
+#####Settings
+participants = ['TOBIE', 'KIM', 'JEFF', 'PEPET', 'MORGAN']
+participants_exception = []
+number_of_pick_by_person = 1
+number_of_pick_by_person_exception = 0
 #####
