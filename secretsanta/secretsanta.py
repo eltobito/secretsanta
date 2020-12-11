@@ -48,18 +48,20 @@ for draw in conf.participants:
     result[draw] = listChoix
 
 #Put result in a file for each paticipant.
-for key, value in result.iteritems():
+for key, value in result.items():
     file_ = open(key+'.txt', 'w')
     if(len(value) == 1):
         line = "HOHOHO Vous avez  :"+str(value)
         receiver = ' '.join(line)
         file_.write(receiver)
-        #print receiver
+        if conf.show_result:
+            print(receiver)
     else:
         receiver = ' and '.join(value)
         file_.write(receiver)
-        #print receiver
+        if conf.show_result:
+            print(receiver)
     file_.close()
-    print "File with name(s) picked successfully created for participant "+key
+    print("File with name(s) picked successfully created for participant "+key)
 
-print "\n\n** Now send the right file to the right participant by email manuelly **"
+print("\n\n** Now send the right file to the right participant by email manuelly **")
