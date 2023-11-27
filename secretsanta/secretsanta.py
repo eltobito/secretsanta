@@ -15,26 +15,6 @@ for participant in conf.participants:
         names_to_pick.append(participant)
         i = i + 1
 
-# Set list of name to pick Exception
-for participant in conf.participants_exception:
-    i=0
-    while i < conf.number_of_pick_by_person_exception :
-        names_to_pick.append(participant)
-        i = i + 1
-
-#Exception pick first
-for draw in conf.participants_exception:
-    count = 0
-    listChoix=[]
-    while (count < conf.number_of_pick_by_person_exception):
-
-        index = randint(0,len(names_to_pick)-1)
-        if(draw != names_to_pick[index]):
-            listChoix.append(names_to_pick[index])
-            count = count + 1
-            del names_to_pick[index]
-    result[draw] = listChoix
-
 #Regular picker
 for draw in conf.participants:
     count = 0
@@ -55,7 +35,10 @@ for draw in conf.participants:
 for key, value in result.items():
     file_ = open(key+'.txt', 'w')
     if(len(value) == 1):
-        line = "HOHOHO Vous avez  pour NOËL "+ str(anne) +": "+str(value)
+        line  = "\nHOHOHO Vous avez  pigé pour NOËL "+ str(anne) +": "+str(value)
+        line += "\nHOHOHO Vous avez  pigé pour NOËL "+ str(anne) +": "+str(value)
+        line += "\nHOHOHO Vous avez  pigé pour NOËL "+ str(anne) +": "+str(value)
+        line += "\nHOHOHO Vous avez  pigé pour NOËL "+ str(anne) +": "+str(value)
         receiver = ' '.join(line)
         file_.write(receiver)
         if conf.show_result:
