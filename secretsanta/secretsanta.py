@@ -2,10 +2,12 @@
 
 from random import randint
 import settings as conf
+import datetime
 
 names_to_pick = []
 result = {}
-
+x = datetime.datetime.now()
+anne = x.year
 # Set list of name to pick Regular
 for participant in conf.participants:
     i=0
@@ -47,11 +49,13 @@ for draw in conf.participants:
             del names_to_pick[index]
     result[draw] = listChoix
 
+
+
 #Put result in a file for each paticipant.
 for key, value in result.items():
     file_ = open(key+'.txt', 'w')
     if(len(value) == 1):
-        line = "HOHOHO Vous avez  :"+str(value)
+        line = "HOHOHO Vous avez  pour NOËL "+ str(anne) +": "+str(value)
         receiver = ' '.join(line)
         file_.write(receiver)
         if conf.show_result:
